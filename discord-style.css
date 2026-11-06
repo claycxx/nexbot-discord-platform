@@ -1,0 +1,388 @@
+/* ============================================================== */
+/* DISCORD SIMULATOR - PIXEL-PERFECT DISCORD DESKTOP STYLESHEET   */
+/* ============================================================== */
+
+:root {
+  --bg-primary: #313338;
+  --bg-secondary: #2b2d31;
+  --bg-secondary-alt: #232428;
+  --bg-tertiary: #1e1f22;
+  --bg-floating: #2b2d31;
+  --bg-hover: rgba(255, 255, 255, 0.05);
+  --bg-active: rgba(255, 255, 255, 0.08);
+  --bg-selected: #35373c;
+  
+  --channel-textarea-bg: #383a40;
+  --text-normal: #dbdee1;
+  --text-muted: #949ba4;
+  --text-link: #00a8fc;
+  --header-primary: #f2f3f5;
+  --header-secondary: #b5bac1;
+  --interactive-normal: #b5bac1;
+  --interactive-hover: #dbdee1;
+  --interactive-active: #ffffff;
+  --interactive-muted: #4e5058;
+  
+  --blurple: #5865f2;
+  --blurple-hover: #4752c4;
+  --green: #23a55a;
+  --yellow: #f0b232;
+  --red: #f23f43;
+  --grey: #80848e;
+  
+  --mention-bg: rgba(88, 101, 242, 0.15);
+  --mention-hover: rgba(88, 101, 242, 0.25);
+  --mention-border: #5865f2;
+  --embed-border: #202225;
+}
+
+/* Custom Discord Scrollbars */
+.discord-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.discord-scroll::-webkit-scrollbar-track {
+  background-color: #2b2d31;
+  border-radius: 4px;
+}
+.discord-scroll::-webkit-scrollbar-thumb {
+  background-color: #1a1b1e;
+  border-radius: 4px;
+}
+.discord-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #111214;
+}
+
+/* Base typography */
+.discord-app {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-normal);
+  background-color: var(--bg-tertiary);
+  user-select: none;
+}
+
+.discord-app * {
+  box-sizing: border-box;
+}
+
+/* Server Icon Tooltip & Active Pill */
+.server-pill {
+  position: absolute;
+  left: 0;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background-color: #ffffff;
+  transition: height 0.15s ease, opacity 0.15s ease;
+}
+
+/* Channel Item */
+.channel-item {
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+.channel-item:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--interactive-hover);
+}
+.channel-item.active {
+  background-color: #404249;
+  color: #ffffff;
+}
+
+/* Message Item & Grouping */
+.discord-message {
+  transition: background-color 0.1s ease;
+}
+.discord-message:hover {
+  background-color: rgba(2, 2, 2, 0.06);
+}
+.discord-message.has-mention {
+  background-color: var(--mention-bg);
+  border-left: 2px solid var(--mention-border);
+}
+.discord-message.has-mention:hover {
+  background-color: var(--mention-hover);
+}
+
+/* Message Hover Actions Toolbar */
+.message-actions-toolbar {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(2px);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+.discord-message:hover .message-actions-toolbar {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Discord Verified Bot Badge */
+.bot-badge {
+  background-color: var(--blurple);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 15px;
+  padding: 0 4px;
+  border-radius: 3px;
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.bot-badge svg {
+  display: inline-block;
+}
+
+/* Interactive Discord Buttons in Embeds */
+.discord-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.15s ease, transform 0.08s ease, filter 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.discord-btn:active {
+  transform: scale(0.96);
+}
+.discord-btn-primary {
+  background-color: #5865f2;
+  color: #ffffff;
+}
+.discord-btn-primary:hover {
+  background-color: #4752c4;
+}
+.discord-btn-secondary {
+  background-color: #4e5058;
+  color: #ffffff;
+}
+.discord-btn-secondary:hover {
+  background-color: #6d6f78;
+}
+.discord-btn-success {
+  background-color: #248046;
+  color: #ffffff;
+}
+.discord-btn-success:hover {
+  background-color: #1a6334;
+}
+.discord-btn-danger {
+  background-color: #da373c;
+  color: #ffffff;
+}
+.discord-btn-danger:hover {
+  background-color: #a1282c;
+}
+
+/* Quick Suggestion Chips */
+.quick-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #c9cdfb;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.quick-chip:hover {
+  background-color: #5865f2;
+  border-color: #5865f2;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.35);
+}
+
+/* Slash Command Autocomplete Popover */
+.slash-popover {
+  animation: popoverFadeIn 0.15s ease-out forwards;
+}
+@keyframes popoverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typing Indicator Animation */
+.typing-dots span {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--text-normal);
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+.typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+.typing-dots span:nth-child(3) { animation-delay: 0s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Reaction Pill */
+.reaction-pill {
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+.reaction-pill:hover {
+  background-color: #35373c;
+  border-color: #4e5058;
+}
+.reaction-pill.reacted {
+  background-color: rgba(88, 101, 242, 0.2);
+  border-color: var(--blurple);
+}
+.reaction-pill.reacted .reaction-count {
+  color: #c9cdfb;
+}
+
+/* Sent GIF */
+.discord-gif {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 124px;
+  margin-top: 4px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #5865f2, #2b2d31);
+}
+.discord-gif-emoji {
+  font-size: 56px;
+  line-height: 1;
+  animation: gifBounce 0.9s ease-in-out infinite;
+}
+.discord-gif-tag {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+}
+@keyframes gifBounce {
+  0%, 100% { transform: translateY(6px) rotate(-8deg); }
+  50% { transform: translateY(-8px) rotate(8deg); }
+}
+
+/* Reply Banner */
+.reply-banner {
+  animation: replySlideDown 0.15s ease-out;
+}
+@keyframes replySlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* XP Float Notification */
+@keyframes xpFloatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0) scale(1.08);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.92);
+  }
+}
+.xp-float {
+  animation: xpFloatUp 1.8s ease-out forwards;
+}
+
+/* Voice Channel Animated Waveform */
+.voice-bar {
+  width: 2.5px;
+  height: 12px;
+  background-color: #23a55a;
+  border-radius: 2px;
+  animation: voiceWave 1.2s infinite ease-in-out;
+}
+.voice-bar:nth-child(1) { animation-delay: 0.1s; }
+.voice-bar:nth-child(2) { animation-delay: 0.3s; }
+.voice-bar:nth-child(3) { animation-delay: 0.5s; }
+.voice-bar:nth-child(4) { animation-delay: 0.2s; }
+@keyframes voiceWave {
+  0%, 100% { height: 3px; }
+  50% { height: 13px; }
+}
+
+/* Modal Dialog */
+.discord-modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  animation: modalFade 0.2s ease-out forwards;
+}
+.discord-modal-box {
+  animation: modalPop 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes modalFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes modalPop {
+  from { transform: scale(0.93) translateY(8px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Command Directory Interactive Cards (#bot-commands) */
+.cmd-directory-card {
+  transition: transform 0.14s ease, border-color 0.14s ease, background-color 0.14s ease, box-shadow 0.14s ease;
+}
+.cmd-directory-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* AI Assistant Top Panel Suggestion Pills (#ai-assistant) */
+.ai-suggestion-pill {
+  transition: transform 0.12s ease, background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.ai-suggestion-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+}
+
